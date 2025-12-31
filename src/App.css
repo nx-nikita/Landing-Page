@@ -1,0 +1,603 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+}
+
+.spotify-logo {
+  height: 32px;
+  width: auto;
+  cursor: pointer;
+}
+
+
+.navbar nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: #1db954;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 80px 60px;
+  gap: 40px;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+}
+
+.hero-content span {
+  color: #1db954;
+}
+
+.hero p {
+  margin: 20px 0;
+  color: #ccc;
+}
+
+.hero-img {
+  width: 45%;
+  border-radius: 20px;
+ 
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.primary-btn {
+  background: #1db954;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.primary-btn:hover {
+  transform: scale(1.08);
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+}
+
+/* Features */
+.features {
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: #121212;
+  padding: 30px;
+  border-radius: 16px;
+}
+
+/* Playlists */
+.playlists {
+  padding: 80px 60px;
+}
+
+.playlist-grid {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.playlist-card {
+  background: linear-gradient(
+    180deg,
+    #181818 0%,
+    #121212 100%
+  );
+  padding: 20px;
+  border-radius: 18px;
+  width: 220px;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+  box-shadow: 
+    0 2px 5px white,
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+
+.playlist-card:hover {
+  transform: translateY(-8px);
+}
+
+.playlist-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+/* ===============================
+   PLAY BUTTON OVERLAY (SPOTIFY STYLE)
+================================ */
+
+/* Wrapper for image + button */
+.playlist-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Green play button */
+.play-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #1db954;
+  border: none;
+  color: #000;
+  font-size: 22px;
+  cursor: pointer;
+
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(10px);
+
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Show play button on card hover */
+.playlist-card:hover .play-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button hover animation */
+.play-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Dark overlay effect on image hover */
+.playlist-img-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.playlist-card:hover .playlist-img-wrapper::after {
+  opacity: 1;
+}
+/* Auto sliding playlist row */
+.playlist-grid {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  width: max-content;
+  
+}
+
+/* Smooth infinite scroll */
+
+
+/* Pause animation on hover (pro UX) */
+.playlist-grid:hover {
+  animation-play-state: paused;
+}
+
+/* Premium Section */
+.premium {
+  padding: 80px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #0f0f0f, #000);
+}
+
+/* Cards container */
+.premium-cards {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* Base card */
+.premium-card {
+  background: linear-gradient(145deg, #121212, #1a1a1a);
+  padding: 40px;
+  border-radius: 22px;
+  width: 260px;
+  position: relative;
+  transition: 
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+/* Soft glow layer */
+.premium-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(29, 185, 84, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Hover animation */
+.premium-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(29, 185, 84, 0.25);
+}
+
+/* Glow appears on hover */
+.premium-card:hover::before {
+  opacity: 1;
+}
+
+/* Active (highlighted plan) */
+.premium-card.active {
+  border: 2px solid #1db954;
+  box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.3),
+              0 25px 60px rgba(29, 185, 84, 0.4);
+}
+
+/* Price animation */
+.price {
+  font-size: 28px;
+  margin: 14px 0;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+/* Price pop on hover */
+.premium-card:hover .price {
+  transform: scale(1.1);
+}
+
+
+.price {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+/* CTA Section */
+.cta {
+  position: relative;
+  padding: 100px 60px;
+  text-align: center;
+  background: linear-gradient(135deg, #1db954, #0f0f0f);
+  overflow: hidden;
+  border-radius: 40px 40px 0 0;
+}
+
+/* Content */
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: auto;
+}
+
+.cta h2 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.cta p {
+  font-size: 18px;
+  color: #e0e0e0;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.glow-btn {
+  box-shadow: 0 0 0 rgba(29, 185, 84, 0.7);
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 30px 15px rgba(29, 185, 84, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(29, 185, 84, 0);
+  }
+}
+
+/* Store badges */
+.store-badges {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.store-badges img {
+  height: 45px;
+  transition: transform 0.3s ease;
+}
+
+.store-badges img:hover {
+  transform: scale(1.08);
+}
+
+/* Music wave animation */
+.music-waves {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 1;
+}
+
+.music-waves span {
+  width: 6px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  animation: wave 1.2s infinite ease-in-out;
+}
+
+.music-waves span:nth-child(2) { animation-delay: 0.1s; }
+.music-waves span:nth-child(3) { animation-delay: 0.2s; }
+.music-waves span:nth-child(4) { animation-delay: 0.3s; }
+.music-waves span:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes wave {
+  0%, 100% {
+    height: 20px;
+  }
+  50% {
+    height: 60px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cta h2 {
+    font-size: 32px;
+  }
+  .cta p {
+    font-size: 16px;
+  }
+}
+
+
+/* Footer */
+.footer {
+  padding: 30px;
+  text-align: center;
+  background: #121212;
+  color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-img {
+    width: 100%;
+  }
+
+  .feature-grid,
+  .premium-cards {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .playlist-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE FIXES (ALL DEVICES)
+   ========================= */
+
+/* Large screens (MacBook / Desktop 4K) */
+@media (min-width: 1400px) {
+  .hero-content h1 {
+    font-size: 60px;
+  }
+
+  .playlist-card {
+    width: 240px;
+  }
+}
+
+/* Laptops & MacBooks */
+@media (max-width: 1200px) {
+  .hero {
+    padding: 70px 40px;
+  }
+
+  .features,
+  .playlists,
+  .premium {
+    padding: 70px 40px;
+  }
+}
+
+/* Tablets (iPad / Surface) */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 16px 30px;
+  }
+
+  .navbar nav {
+    gap: 16px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-img {
+    width: 80%;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+ 
+
+  .playlist-grid {
+    animation-duration: 60s;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .navbar nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    padding: 12px 22px;
+    font-size: 14px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+ 
+
+  .premium-card {
+    width: 90%;
+  }
+
+  .cta {
+    padding: 80px 30px;
+  }
+
+  .cta h2 {
+    font-size: 30px;
+  }
+
+  .store-badges {
+    flex-direction: column;
+  }
+}
+
+/* Small Phones (Very Small Screens) */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .cta h2 {
+    font-size: 26px;
+  }
+
+  .playlist-grid {
+    gap: 20px;
+  }
+
+  .music-waves {
+    display: none;
+  }
+}
+
+
+
+  .play-btn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
